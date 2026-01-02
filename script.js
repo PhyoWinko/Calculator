@@ -42,20 +42,24 @@ function operate(operand1, operand2, operator) {
 
 const display = document.querySelector('.display');
 // displayText variable to show on display 
-let displayText = ""
+let displayText = "";
 display.textContent = displayText;
-const buttonContainer = document.querySelector(".button-container");
+// const buttonContainer = document.querySelector(".button-container");
 
 
 function updateDisplay(text) {
-    displayText = "" + String(text);
+    displayText += "" + String(text);
     console.log(`displaytext: ${displayText}`);
     display.textContent = displayText;
 }
 
-buttonContainer.addEventListener('click', function(event) {
-    console.log(event.target.value);
-    updateDisplay(event.target.value);
+const inputButtons = document.querySelectorAll('input');
+console.log(inputButtons);
+inputButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        console.log("click");
+        updateDisplay(this.value);
+    });
 })
 
 
