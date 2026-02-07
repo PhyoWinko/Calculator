@@ -1,22 +1,18 @@
 // some basic calculator function
 function add(a, b) {
-    answer = a + b;
-    console.log(answer);
+    return a + b;
 }
 
 function subtract(a, b) {
-    answer = a - b;
-    console.log(answer);
+    return a - b;
 }
 
 function multiply(a, b) {
-    answer = a * b;
-    console.log(answer);
+    return a * b;
 }
 
 function divide(a, b) {
-    answer = a / b;
-    console.log(answer);
+    return a / b;
 }
 
 let firstNumber;
@@ -28,18 +24,13 @@ let result;
 function operate(operand1, operand2, operator) {
     switch(operator) {
         case "+":
-            add(operand1, operand2);
-            break;
+            return add(operand1, operand2);
         case '-': 
-            subtract(operand1, operand2);
-            break;
+            return subtract(operand1, operand2);
         case '*':
-            multiply(operand1, operand2);
-            break;
+            return multiply(operand1, operand2);
         case '/':
-            divide(operand1, operand2);
-            break; 
-    }
+            return divide(operand1, operand2);    }
 }
 
 const display = document.querySelector('.calculator-display');
@@ -69,17 +60,41 @@ inputButtons.forEach(button => {
         console.log(event);
         // display the value
         updateDisplay(value);
-
+        
         if (type === "operator") {
-            console.log("operator button presssed!")
-            firstNumber = display.textContent.slice(0, -1);
-            console.log("first number", firstNumber);
+
             currentOperator = value;
+
+            if (!firstNumber) {
+                console.log("operator button presssed!")
+                firstNumber = displayinfo.displayText.slice(0, -1);
+                console.log("first number", firstNumber);
+                display.textContent = firstNumber;
+                displayinfo.displayText = "";
+                console.log("current operator", currentOperator);
+            }
+
+            // if already has firstNumber
+            // get second second and then make first number again
+            else {
+                secondNumber = displayinfo.displayText.slice(0, -1);
+                result = operate(firstNumber, secondNumber, currentOperator);
+                display.textContent = result;
+                firstNumber = result;
+                displayinfo.displayText = "";
+
+            }
         }
 
         if (type === "answer") {
             console.log("answer button pressed!");
-            result = operate(firstNumber, secondNumber, event.target.value);
+            secondNumber = displayinfo.displayText.slice(0, -1);
+            console.log("second number", secondNumber);
+
+            result = operate(firstNumber, secondNumber, currentOperator);
+            display.textContent = result;
+            firstNumber = result;
+            displayinfo.displayText = "";
         }
 
     })
