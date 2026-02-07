@@ -1,37 +1,43 @@
 body {
+    background-color: orange;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    background-color: black;
+    display: flex;
     flex-direction: column;
+    height: 600px;
+    width: 450px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5%;
+}
+
+.calculator-display {
+    height: 150px;
+    width: 400px;
     background-color: grey;
-    gap: 30px;
-}
-.display {
-    height: 200px;
-    width: 600px;
-    border: 5px solid orange;
-    border-radius: 30px;
     color: white;
-    font-size: 160px;
-}
-
-.button-container {
-    width: 600px;
-    height: 800px;
-    box-sizing: content-box;
-    border: 5px solid orange;
+    font-size: 45px;
     display: flex;
-    flex-direction: column;
-}
-
-
-.button-container > form div {
-    display: flex;
-    flex-direction: row;
+    justify-content: flex-end;
 }
 
 input {
-    display: block;
-    height: 200px;
-    width: 150px; /* 600 divided by 4 */
-    cursor: pointer;
-} 
+    height: 100px;
+    width: 100px;
+    cursor: pointer; 
+}
+
+input:active {
+    transform: scale(1.05);
+}
+
+[data-type="operator"] {
+    background-color: orange;
+    color: white;
+}

@@ -8,35 +8,38 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="display"></div>
 
-    <div class="button-container">
-        <form>
-        <div>
-            <input type="button" value="7">
-            <input type="button" value="8">
-            <input type="button" value="9">
-            <input type="button" value="/">
+    <div class="calculator">
+
+        <div class="calculator-display"></div>
+
+        <div class="button-container">
+            <div>
+                <input type="button" data-type="number" value="7">
+                <input type="button" data-type="number" value="8">
+                <input type="button" data-type="number" value="9">
+                <input type="button" data-type="operator" value="/">
+            </div>
+            <div>
+                <input type="button" data-type="number" value="4">
+                <input type="button" data-type="number" value="5">
+                <input type="button" data-type="number" value="6">
+                <input type="button" data-type="operator" value="*">
+            </div>
+            <div>
+                <input type="button" data-type="number" value="1">
+                <input type="button" data-type="number" value="2">
+                <input type="button" data-type="number" value="3">
+                <input type="button" data-type="operator" value="-">
+            </div>
+            <div>
+                <input type="button" data-type="answer" value="=">
+                <input type="button" data-type="number" value="0">
+                <input type="button" value=".">
+                <input type="button" data-type="operator" value="+">
+            </div>
         </div>
-        <div>
-            <input type="button" value="4">
-            <input type="button" value="5">
-            <input type="button" value="6">
-            <input type="button" value="*">
-        </div>
-        <div>
-            <input type="button" value="1">
-            <input type="button" value="2">
-            <input type="button" value="3">
-            <input type="button" value="-">
-        </div>
-        <div>
-            <input type="button" value="">
-            <input type="button" value="0">
-            <input type="button" value=".">
-            <input type="button" value="+">
-        </div>
-        </form>
     </div>
+
 </body>
 </html>
