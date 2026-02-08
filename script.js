@@ -22,6 +22,8 @@ let result;
 
 // operate funciton to call basic calculation function
 function operate(operand1, operand2, operator) {
+    operand1 = Number(operand1);
+    operand2 = Number(operand2);
     switch(operator) {
         case "+":
             return add(operand1, operand2);
@@ -60,18 +62,19 @@ inputButtons.forEach(button => {
         console.log(event);
         // display the value
         updateDisplay(value);
-        
+
         if (type === "operator") {
 
-            currentOperator = value;
-
             if (!firstNumber) {
-                console.log("operator button presssed!")
+                console.log("operator button presssed!");
                 firstNumber = displayinfo.displayText.slice(0, -1);
+                currentOperator = displayinfo.displayText.split('').splice(-1, 1).toString();
+                console.log("current operator", currentOperator);
                 console.log("first number", firstNumber);
                 display.textContent = firstNumber;
                 displayinfo.displayText = "";
-                console.log("current operator", currentOperator);
+                currentOperator = value;
+
             }
 
             // if already has firstNumber
@@ -82,6 +85,7 @@ inputButtons.forEach(button => {
                 display.textContent = result;
                 firstNumber = result;
                 displayinfo.displayText = "";
+                currentOperator = value;
 
             }
         }
@@ -95,6 +99,17 @@ inputButtons.forEach(button => {
             display.textContent = result;
             firstNumber = result;
             displayinfo.displayText = "";
+
+            if (value) {
+                // clear result and make it firstnumber
+                result = null;
+                firstNumber = value;
+            }
+        }
+
+        if (type === clear) {
+            display.textContent = 0;
+            firstNumber = null;
         }
 
     })

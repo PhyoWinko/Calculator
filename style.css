@@ -9,7 +9,7 @@ body {
     background-color: black;
     display: flex;
     flex-direction: column;
-    height: 600px;
+    height: 670px;
     width: 450px;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,14 @@ body {
     justify-content: flex-end;
 }
 
-input {
+.function-container > input {
+    height: 70px;
+    width: 100px;
+    cursor: pointer;
+
+}
+
+.number-container > input {
     height: 100px;
     width: 100px;
     cursor: pointer; 
