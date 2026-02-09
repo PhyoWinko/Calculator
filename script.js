@@ -12,7 +12,13 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return (a / b).toFixed(7);
+    // to decimal 7 place logic
+    let answer = a / b;
+    let decimalLength = answer.toString().split(".")[1];
+    if (decimalLength > 8) {
+        return answer.toFixed(7);
+    }
+    return answer;
 }
 
 let firstNumber;
@@ -64,9 +70,8 @@ inputButtons.forEach(button => {
         // this code suggested from copilot
         const value = event.target.value;
         const type = event.target.dataset.type;
-
         console.log("checking status click", value, type);
-        console.log(event);
+
         // display the value
         updateDisplay(value);
 
