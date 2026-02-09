@@ -12,7 +12,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / b;
+    return (a / b).toFixed(7);
 }
 
 let firstNumber;
@@ -31,7 +31,7 @@ function operate(operand1, operand2, operator) {
             return subtract(operand1, operand2);
         case '*':
             return multiply(operand1, operand2);
-        case '/':
+        case '➗':
             return divide(operand1, operand2);    }
 }
 
@@ -49,6 +49,13 @@ function updateDisplay(text) {
     display.textContent = displayinfo.displayText;
 }
 
+function clearData() {
+    result = null;
+    display.textContent = 0;
+    displayinfo.displayText = "";
+    firstNumber = null;
+    console.log(display, displayinfo.displayText, firstNumber);
+}
 
 const inputButtons = document.querySelectorAll('input');
 console.log(inputButtons);
@@ -81,7 +88,10 @@ inputButtons.forEach(button => {
             // get second second and then make first number again
             else {
                 secondNumber = displayinfo.displayText.slice(0, -1);
+                console.log("second number", secondNumber);
                 result = operate(firstNumber, secondNumber, currentOperator);
+                console.log(`first number is ${firstNumber} second number is ${secondNumber} current operator is ${currentOperator}`);
+                console.log("result", result);
                 display.textContent = result;
                 firstNumber = result;
                 displayinfo.displayText = "";
@@ -94,23 +104,18 @@ inputButtons.forEach(button => {
             console.log("answer button pressed!");
             secondNumber = displayinfo.displayText.slice(0, -1);
             console.log("second number", secondNumber);
-
             result = operate(firstNumber, secondNumber, currentOperator);
+            console.log(`first number is ${firstNumber} second number is ${secondNumber} current operator is ${currentOperator}`);
+            console.log("result", result);
             display.textContent = result;
             firstNumber = result;
             displayinfo.displayText = "";
-
-            if (value) {
-                // clear result and make it firstnumber
-                result = null;
-                firstNumber = value;
-            }
         }
 
-        if (type === clear) {
-            display.textContent = 0;
-            firstNumber = null;
-        }
 
+        if (type === "clear") {
+            console.log("clear button pressed");
+            clearData();
+        }
     })
 })
